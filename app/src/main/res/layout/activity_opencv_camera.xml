@@ -5,8 +5,11 @@
     android:layout_height="match_parent">
 
     <org.opencv.android.JavaCameraView
+        android:id="@+id/camera_surface"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/camera_surface"/>
+        android:rotationX="0"
+        android:rotationY="0"
+        android:visibility="visible" />
 
 </FrameLayout>
