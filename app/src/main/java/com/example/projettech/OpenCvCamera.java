@@ -41,8 +41,6 @@ public class OpenCvCamera extends Activity implements CameraBridgeViewBase.CvCam
     JavaCameraView cameraBridgeViewBase;
     private CascadeClassifier haarCascade;
 
-
-
     BaseLoaderCallback baseLoaderCallback = new BaseLoaderCallback(this) {
         @Override
         public void onManagerConnected(int status) {
