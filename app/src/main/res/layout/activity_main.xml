@@ -7,19 +7,150 @@
     android:gravity="center|bottom"
     >
 
-    <RelativeLayout
-
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <org.opencv.android.JavaCameraView
-        android:layout_width="120dp"
-        android:layout_height="170dp"
-        android:id="@+id/camera_frame"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="20dp"
-        />
+        android:layout_height="match_parent"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/text_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/start_text"
+            android:textSize="30sp"
+            android:textAlignment="center"
+            android:layout_marginVertical="8dp"
+            />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+            <Button
+
+                android:text="@string/first"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                style="@style/textBtnStyle"
+                android:background="@drawable/btn_shape"
+                />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:text="@string/abc"
+                android:layout_margin="4dp"
+                style="@style/textBtnStyle"
+
+                />
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:text="@string/first"
+                android:layout_margin="4dp"
+                style="@style/textBtnStyle"
+
+                />
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <Button
+
+                android:text="@string/first"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                style="@style/textBtnStyle"
+                android:background="@drawable/btn_shape"
+                />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:text="@string/abc"
+                android:layout_margin="4dp"
+                style="@style/textBtnStyle"
+
+                />
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:text="@string/first"
+                android:layout_margin="4dp"
+                style="@style/textBtnStyle"
+
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <Button
+
+                android:text="@string/first"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                style="@style/textBtnStyle"
+                android:background="@drawable/btn_shape"
+                />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:text="@string/abc"
+                android:layout_margin="4dp"
+                style="@style/textBtnStyle"
+
+                />
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:text="@string/first"
+                android:layout_margin="4dp"
+                style="@style/textBtnStyle"
+
+                />
+        </LinearLayout>
+        <org.opencv.android.JavaCameraView
+            android:id="@+id/camera_frame"
+
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+
+            android:layout_marginBottom="20dp"
+            android:layout_width="120dp"
+            android:layout_height="170dp"
+            android:layout_marginStart="131dp"
+            />
 
 
-    </RelativeLayout>
+    </LinearLayout>
 </LinearLayout>
+
+    <!--   android:layout_width="120dp"
+                android:layout_height="170dp"
+                 android:layout_marginStart="131dp"
+            android:layout_marginTop="519dp"
+                -->

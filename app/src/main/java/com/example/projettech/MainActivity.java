@@ -15,6 +15,7 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.Toast;
 
 import org.opencv.android.BaseLoaderCallback;
@@ -171,8 +172,6 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
  //       javaCameraView.enableFpsMeter();
  //       javaCameraView.setCameraIndex(1);
   //      javaCameraView.enableView();
-
-
     }
 
     @Override
@@ -266,12 +265,12 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
 
 
 
-                Core.transpose(mRGBA, mRgbaT);
+               /* Core.transpose(mRGBA, mRgbaT);
                 Imgproc.resize(mRgbaT, mRgbaF, mRGBA.size(), 0, 0, 0);
                 Core.flip(mRgbaF, mRGBA, -1);
                 Core.transpose(mGray, mGrayT);
                 Imgproc.resize(mGrayT, mGrayF, mGray.size(), 0, 0, 0);
-                Core.flip(mGrayF, mGray, -1);
+                Core.flip(mGrayF, mGray, -1);*/
 
 
 
