@@ -128,6 +128,9 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
 
             // Create a grayscale image
 
+
+            // detect multiple faces and stock them in matOfRect
+            //Try to get the first face detected
             MatOfRect faces = new MatOfRect();
 
             // Use the classifier to detect faces
