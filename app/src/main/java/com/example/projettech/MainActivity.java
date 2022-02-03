@@ -111,7 +111,6 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
 
         // Train the algorithm
         try {
-            // Copy the resource into a temp file so OpenCV can load it
             InputStream is = getResources().openRawResource(R.raw.haarcascade_frontalface_alt2);
             //Classifieur face
             File cascadeDir = getDir("cascade", Context.MODE_PRIVATE);
@@ -126,7 +125,7 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
             is.close();
             os.close();
 
-            
+
 
             // load cascade file from application resources
             InputStream ise = getResources().openRawResource(R.raw.haarcascade_lefteye_2splits);
@@ -200,9 +199,14 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
             mGray = inputFrame.gray();//convert the frame to gray scale, then assign this value to the gray Mat img matrix.
 
             //Matrice transposee
-            Mat mRgbaT = mRGBA.t();
+            //Mat mRgbaT = mRGBA.t();
 
-
+            Core.transpose(mRGBA, mRgbaT);
+            Imgproc.resize(mRgbaT, mRgbaF, mRGBA.size(), 0, 0, 0);
+            Core.flip(mRgbaF, mRGBA, -1);
+            Core.transpose(mGray, mGrayT);
+            Imgproc.resize(mGrayT, mGrayF, mGray.size(), 0, 0, 0);
+            Core.flip(mGrayF, mGray, -1);
 
             // Create a grayscale image
 
@@ -217,7 +221,7 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
             // If there are any faces found, draw a rectangle around it
             Rect[] facesArray = faces.toArray();
             for (int i = 0; i <facesArray.length; i++) {
-                Imgproc.rectangle(mRGBA, facesArray[i].tl(), facesArray[i].br(), new Scalar(255, 0, 0), 5);
+                Imgproc.rectangle(mRGBA, facesArray[i].tl(), facesArray[i].br(), new Scalar(0, 255, 0), 3);
                 Log.i(TAG_OPENCV, " FACE draw");
 
                 /// elimination de plusieurs frames
