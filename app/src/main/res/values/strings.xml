@@ -1,8 +1,17 @@
 <resources>
-    <string name="app_name">ProjetTech</string>
+    <string name="app_name">Parlez avec vos yeux</string>
     <string name="first">#</string>
-    <string name="abc">abc</string>
-    <string name="defg">defg</string>
+    <string name="abc">ABC</string>
+    <string name="def">DEF</string>
+    <string name="ghi">GHI</string>
+    <string name="jkl">JKL</string>
+    <string name="mno">MNO</string>
+    <string name="pqrs">PQRS</string>
+    <string name="tuv">TUV</string>
+    <string name="xywz">XYWZ</string>
+    <string name="clear">Effacer</string>
+    <string name="valide">Parler</string>
+
     <string name="start_text">Text...</string>
 
 
