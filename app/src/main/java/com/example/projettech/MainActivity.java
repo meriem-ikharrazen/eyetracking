@@ -1,29 +1,14 @@
-////Amelioration: Point d'améliorations a ajoutée.
-/// Amelioration: elimination de plusieurs frames
-
 package com.example.projettech;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
-import android.Manifest;
 import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.SurfaceView;
-import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.GridView;
-import android.widget.Toast;
 
-import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
-import org.opencv.android.JavaCameraView;
 import org.opencv.android.OpenCVLoader;
 import org.opencv.core.Core;
 import org.opencv.core.CvType;
@@ -35,14 +20,6 @@ import org.opencv.core.Scalar;
 import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
-import org.opencv.objdetect.Objdetect;
-
-
-import static org.opencv.imgproc.Imgproc.CV_BLUR;
-import static org.opencv.imgproc.Imgproc.TM_SQDIFF;
-import static org.opencv.imgproc.Imgproc.TM_SQDIFF_NORMED;
-
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -91,7 +68,6 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
         javaCameraView.enableView();
         javaCameraView.setCvCameraViewListener(MainActivity.this);
 
-
         // Train the algorithm
         try {
             InputStream is = getResources().openRawResource(R.raw.haarcascade_frontalface_alt2);
@@ -121,13 +97,12 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
             ise.close();
             ose.close();
 
-
-            // Load the cascade classifier
+            // Load the cascade classifier for face
             FaceCascadeClassifier = new CascadeClassifier(mCascadeFile.getAbsolutePath());
             Log.i(TAG_OPENCV, "Loaded cascade classifier from " +
                     mCascadeFile.getAbsolutePath());
 
-            // Load the cascade classifier EYE
+            // Load the cascade classifier for eye
             EyeCascadeClassifier = new CascadeClassifier(mCascadeFileEye.getAbsolutePath());
             Log.i(TAG_OPENCV, "Loaded cascade classifier from " +
                     mCascadeFileEye.getAbsolutePath());
@@ -227,35 +202,6 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
 
         }
 
-        /*************START: TEST Harris ****************/
-        /*
-        if(eyearea_right !=  null && eyearea_left !=  null){
-            Rect e = new Rect(eyearea_right.x + 5,
-                    eyearea_right.y+5,
-                    eyearea_right.width+eyearea_left.width-5, eyearea_right.height-5);
-            mGray = new Mat(mGray,e);
-            Imgproc.equalizeHist(mGray,mGray);
-
-            dst = Mat.zeros(mGray.size(), CvType.CV_32F);
-            int blockSize = 2;
-            int apertureSize = 3;
-            double k = 0.04;
-            Imgproc.cornerHarris(mGray, dst, blockSize, apertureSize, k);
-            Core.normalize(dst, dstNorm, 0, 255, Core.NORM_MINMAX);
-            Core.convertScaleAbs(dstNorm, dstNormScaled);
-            float[] dstNormData = new float[(int) (dstNorm.total() * dstNorm.channels())];
-            dstNorm.get(0, 0, dstNormData);
-            for (int ii = 0; ii < dstNorm.rows(); ii++) {
-                for (int j = 0; j < dstNorm.cols(); j++) {
-                    if ((int) dstNormData[ii * dstNorm.cols() + j] > threshold) {
-                        Log.e("EyePixelVector", "right");
-                        Imgproc.circle(mRGBA, new Point(j+eyearea_right.x, ii+eyearea_right.y), 3, new Scalar(0, 128, 255, 1.0), 1, 8, 0);
-                    }
-                }
-            }
-        }
-        /*************START: TEST Harris ****************/
-
         mGray.release();
         return mRGBA;
     }
@@ -292,7 +238,7 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
 
             // minMaxLoc: Return the max and the min intensity in the image
             Core.MinMaxLocResult intensity = Core.minMaxLoc(mROI);
-            
+
             // Because the ires area is Black so it's intensity is LOW (1=White, 0= Black)
             // That's why we worked by minLoc
             Imgproc.circle(eye, intensity.minLoc, 2, new Scalar(255, 255, 255, 255), 2);
@@ -309,5 +255,4 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
         /************* END: Draw eye area and iris ****************/
         return iris;
     }
-
 }

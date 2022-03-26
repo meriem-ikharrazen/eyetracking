@@ -6,184 +6,181 @@
     android:gravity="center|bottom"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp">
-
-        <TextView
-            android:id="@+id/text_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="8dp"
-            android:text="@string/start_text"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:paddingVertical="20sp"/>
+        android:backgroundTint="#321515">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="5dp">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
 
-            <androidx.appcompat.widget.AppCompatButton
+            <TextView
+                android:id="@+id/text_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="8dp"
+                android:paddingVertical="20sp"
+                android:text="@string/start_text"
+                android:textAlignment="center"
+                android:textSize="20sp" />
 
-                style="@style/textBtnStyle"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_margin="2dp"
-                android:layout_weight="1"
-                android:text="@string/first" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp">
 
-            <androidx.appcompat.widget.AppCompatButton
+                <androidx.appcompat.widget.AppCompatButton
 
-                style="@style/textBtnStyle"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_margin="2dp"
-                android:layout_weight="1"
-                android:text="@string/abc"
+                    style="@style/textBtnStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:text="@string/first" />
 
-                />
+                <androidx.appcompat.widget.AppCompatButton
 
-            <androidx.appcompat.widget.AppCompatButton
-                style="@style/textBtnStyle"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_margin="2dp"
-                android:layout_weight="1"
-                android:text="@string/def" />
+                    style="@style/textBtnStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:text="@string/abc"
+
+                    />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    style="@style/textBtnStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:text="@string/def" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+
+
+                    style="@style/textBtnStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_shape"
+                    android:text="@string/ghi" />
+
+                <androidx.appcompat.widget.AppCompatButton
+
+                    style="@style/textBtnStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:text="@string/jkl"
+
+                    />
+
+                <androidx.appcompat.widget.AppCompatButton
+
+                    style="@style/textBtnStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:text="@string/mno"
+
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+
+
+                    style="@style/textBtnStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_shape"
+                    android:text="@string/pqrs" />
+
+                <androidx.appcompat.widget.AppCompatButton
+
+                    style="@style/textBtnStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:text="@string/tuv"
+
+                    />
+
+                <androidx.appcompat.widget.AppCompatButton
+
+                    style="@style/textBtnStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:text="@string/xywz"
+
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="5dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    style="@style/actionBtnStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_speaker"
+                    android:text="@string/valide" />
+
+                <androidx.appcompat.widget.AppCompatButton
+
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_clear"
+                    android:text="@string/clear" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <org.opencv.android.JavaCameraView
+                    android:id="@+id/camera_frame"
+                    android:layout_width="227dp"
+                    android:layout_height="298dp"
+                    android:layout_marginTop="20dp" />
+            </LinearLayout>
+
+
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="5dp">
-
-            <androidx.appcompat.widget.AppCompatButton
-
-
-                style="@style/textBtnStyle"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_margin="2dp"
-                android:layout_weight="1"
-                android:background="@drawable/btn_shape"
-                android:text="@string/ghi" />
-
-            <androidx.appcompat.widget.AppCompatButton
-
-                style="@style/textBtnStyle"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_margin="2dp"
-                android:layout_weight="1"
-                android:text="@string/jkl"
-
-                />
-
-            <androidx.appcompat.widget.AppCompatButton
-
-                style="@style/textBtnStyle"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_margin="2dp"
-                android:layout_weight="1"
-                android:text="@string/mno"
-
-                />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="5dp">
-
-            <androidx.appcompat.widget.AppCompatButton
-
-
-                style="@style/textBtnStyle"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_margin="2dp"
-                android:layout_weight="1"
-                android:background="@drawable/btn_shape"
-                android:text="@string/pqrs" />
-
-            <androidx.appcompat.widget.AppCompatButton
-
-                style="@style/textBtnStyle"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_margin="2dp"
-                android:layout_weight="1"
-                android:text="@string/tuv"
-
-                />
-
-            <androidx.appcompat.widget.AppCompatButton
-
-                style="@style/textBtnStyle"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_margin="2dp"
-                android:layout_weight="1"
-                android:text="@string/xywz"
-
-                />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="5dp">
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_margin="2dp"
-                android:layout_weight="1"
-                android:text="@string/valide"
-                android:drawableLeft="@drawable/ic_speaker"
-                style="@style/actionBtnStyle"
-                />
-
-            <androidx.appcompat.widget.AppCompatButton
-
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_margin="2dp"
-                android:layout_weight="1"
-                android:text="@string/clear"
-                android:drawableLeft="@drawable/ic_clear"
-                />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
->
-
-            <org.opencv.android.JavaCameraView
-                android:id="@+id/camera_frame"
-                android:layout_width="227dp"
-                android:layout_height="298dp"
-                android:layout_marginTop="20dp" />
-        </LinearLayout>
-
-
-    </LinearLayout>
+    </ScrollView>
 </LinearLayout>
-
-    <!--   android:layout_width="120dp"
-                android:layout_height="170dp"
-                 android:layout_marginStart="131dp"
-            android:layout_marginTop="519dp"
-                -->
