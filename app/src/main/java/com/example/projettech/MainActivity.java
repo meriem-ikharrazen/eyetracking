@@ -20,6 +20,7 @@ import org.opencv.core.Scalar;
 import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -29,18 +30,24 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
     private static final String TAG_OPENCV = "OpenCv";
     private static final String TAG = "MainActivity";
 
-    CameraBridgeViewBase javaCameraView;
-    Mat mRGBA;
-    Mat mGray;
-    Mat mRgbaF;
-    Mat mRgbaT;
-    Mat mGrayF;
-    Mat mGrayT;
+    private CameraBridgeViewBase javaCameraView;
+    private Mat mRGBA;
+    private Mat mGray;
+    private Mat mRgbaF;
+    private Mat mRgbaT;
+    private Mat mGrayF;
+    private Mat mGrayT;
 
     private CascadeClassifier FaceCascadeClassifier;
     private CascadeClassifier EyeCascadeClassifier;
 
-    File mCascadeFileEye;
+    private File mCascadeFileEye;
+
+    private Point pupilRight;
+    private Point pupilLeft;
+
+    private Rect eyearea_right;
+    private Rect eyearea_left;
 
     static {
         if (OpenCVLoader.initDebug()) {
@@ -49,12 +56,6 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
             Log.d(TAG, "opencv not installed");
         }
     }
-
-    private Point irisRight;
-    private Point irisLeft;
-
-    private Rect eyearea_right;
-    private Rect eyearea_left;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -190,15 +191,15 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
                     new Scalar(255, 0, 0, 255), 2);
             Imgproc.rectangle(mRGBA, eyearea_right.tl(), eyearea_right.br(),
                     new Scalar(255, 0, 0, 255), 2);
-            /////Log.i(TAG_OPENCV, "EYES draw");
+
             /*************End: Eyes detection****************/
 
-            /*************START: iris(pupilles) detection****************/
+            /*************START: pupils detection****************/
 
-            irisRight = get_iris(EyeCascadeClassifier, eyearea_right, 24);
-            irisLeft = get_iris(EyeCascadeClassifier, eyearea_left, 24);
+            pupilRight = get_pupil(EyeCascadeClassifier, eyearea_right, 24);
+            pupilLeft = get_pupil(EyeCascadeClassifier, eyearea_left, 24);
 
-            /*************END: iris(pupilles) detection****************/
+            /*************END: pupils detection****************/
 
         }
 
@@ -206,15 +207,15 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
         return mRGBA;
     }
 
-    private Point get_iris(CascadeClassifier clasificator, Rect area, int size) {
+    private Point get_pupil(CascadeClassifier clasificator, Rect area, int size) {
 
         Rect eye_template = new Rect();
         // Submat: extract the matrix area from the grey image and stock it in mROI (matrix Region of interest)
         Mat mROI = mGray.submat(area);
         //will be around eyes (including eyes), this will be filled by detectMultiScale
         MatOfRect eyes = new MatOfRect();
-        //to identify iris.
-        Point iris = new Point();
+        //to identify pupil.
+        Point pupil = new Point();
 
         /************* START: Eyes detection using the cascade classifier ****************/
         clasificator.detectMultiScale(mROI, eyes, 1.1, 2, 2, new Size(30, 30),
@@ -224,7 +225,7 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
         // Get an array for all the detected eyes
         Rect[] eyesArray = eyes.toArray();
 
-        /************* START: Draw eye area and iris ****************/
+        /************* START: Draw eye area and pupils ****************/
         for (int i = 0; i < eyesArray.length; ) {
             Rect e = eyesArray[i];
             //the starting x coordinates of the rect (eye area) + the area
@@ -236,23 +237,23 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
             mROI = mGray.submat(eye_only_rectangle);
             Mat eye = mRGBA.submat(eye_only_rectangle);
 
-            // minMaxLoc: Return the max and the min intensity in the image
-            Core.MinMaxLocResult intensity = Core.minMaxLoc(mROI);
+            // minMaxLoc: Return the max and the min value in the image
+            Core.MinMaxLocResult value = Core.minMaxLoc(mROI);
 
-            // Because the ires area is Black so it's intensity is LOW (1=White, 0= Black)
+            // Because the pupils are Black so their value is LOW (255=White, 0= Black)
             // That's why we worked by minLoc
-            Imgproc.circle(eye, intensity.minLoc, 2, new Scalar(255, 255, 255, 255), 2);
-            iris.x = intensity.minLoc.x + eye_only_rectangle.x;
-            iris.y = intensity.minLoc.y + eye_only_rectangle.y;
-            eye_template = new Rect((int) iris.x - size / 2, (int) iris.y
+            Imgproc.circle(eye, value.minLoc, 2, new Scalar(255, 255, 255, 255), 2);
+            pupil.x = value.minLoc.x + eye_only_rectangle.x;
+            pupil.y = value.minLoc.y + eye_only_rectangle.y;
+            eye_template = new Rect((int) pupil.x - size / 2, (int) pupil.y
                     - size / 2, size, size);
 
             Imgproc.rectangle(mRGBA, eye_template.tl(), eye_template.br(),
                     new Scalar(255, 0, 0, 255), 2);
 
-            return iris;
+            return pupil;
         }
-        /************* END: Draw eye area and iris ****************/
-        return iris;
+        /************* END: Draw eye area and pupils ****************/
+        return pupil;
     }
 }
